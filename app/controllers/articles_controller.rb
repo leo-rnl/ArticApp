@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
-  before_action :select_article, only: [:show, :create, :destroy, :upvote]
+  before_action :select_article, only: [:show, :destroy, :upvote]
 
   def show
     @comments = Comment.where('article_id = ?', params[:id])
