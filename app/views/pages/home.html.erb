@@ -5,7 +5,9 @@
   <% @articles.each do | article | %>
   <li>  
     <h2><%= link_to article.title, article_path(article) %></h2>
+    <% if article.user == current_user %>
     <span> <%= link_to "Supprimer", article_path(article), :method => 'delete' %> </span>
+    <% end %>
   </li>
   <% end %>
 </ul>

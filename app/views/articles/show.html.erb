@@ -6,7 +6,7 @@
     <ul>
       <% @comments.each do |comment| %>
       <li>
-        <h4><%= comment.user %></h4>
+        <h4><%= comment.user.email %></h4>
         <p><%= comment.content %></p>
       </li>
       <% end %>
