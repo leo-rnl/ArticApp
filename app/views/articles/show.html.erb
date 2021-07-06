@@ -1,7 +1,8 @@
 <main>
   <h1><%= @article.title %></h1>
   <p><%= @article.content %></p>
-
+  <span>Likes : <%= @article.likes || 0%></span>
+  <%= link_to "Upvote",  upvote_path(@article)%>
   <h3>Commentaires</h3>
 
 
