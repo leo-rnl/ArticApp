@@ -27,10 +27,16 @@ class ArticlesController < ApplicationController
     redirect_to root_path
   end
 
-  # def upvote
-  #   @article = Article.find(params[:id])
-  #   @upvote = Upvote.new(@)
-  # end
+  def upvote
+    @article = Article.find(params[:id])
+    @upvote = Upvote.new(article_id: @article.id, user_id: current_user.id)
+      if @upvote.save
+        @article.likes += 1
+        @article.save
+      end
+          
+    redirect_to article_path(@article)
+  end
 
   private
 
