@@ -1,18 +1,23 @@
 <main>
   <h1><%= @article.title %></h1>
+  <p><%= @article.content %></p>
 
   <h3>Commentaires</h3>
 
 
     <ul>
-    
       <% @comments.each do |comment| %>
       <li>
         <h4><%= comment.user %></h4>
-        <p><% comment.content %></p>
+        <p><%= comment.content %></p>
       </li>
       <% end %>
-
     </ul>
+    <% if user_signed_in? %>
+      <%= simple_form_for [@article, @comment] do |f| %>
+        <%= f.input :content, label: 'Laissez un commentaire' %>
+        <%= f.button :submit %>
+      <% end %>
+    <%end %>
 
 </main>

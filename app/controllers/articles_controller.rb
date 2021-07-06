@@ -3,6 +3,7 @@ class ArticlesController < ApplicationController
   def show
     @article = Article.find(params[:id])
     @comments = Comment.where('article_id = ?', params[:id])
+    @comment = Comment.new
   end
 
   def new
@@ -25,6 +26,11 @@ class ArticlesController < ApplicationController
     @article.destroy
     redirect_to root_path
   end
+
+  # def upvote
+  #   @article = Article.find(params[:id])
+  #   @upvote = Upvote.new(@)
+  # end
 
   private
 
