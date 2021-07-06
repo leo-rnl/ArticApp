@@ -1,5 +1,5 @@
 <%= simple_form_for @article do |f| %>
   <%= f.input :title %>
-  <%= f.input :content %>
+  <%= f.input :content, as: :rich_text_area, label: 'Content', placeholder: 'Text goes here' %>
   <%= f.button :submit %>
 <% end %>
