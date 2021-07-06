@@ -1,7 +1,7 @@
 class ArticlesController < ApplicationController
+  before_action :select_article, only: [:show, :create, :destroy, :upvote]
 
   def show
-    @article = Article.find(params[:id])
     @comments = Comment.where('article_id = ?', params[:id])
     @comment = Comment.new
   end
@@ -22,23 +22,25 @@ class ArticlesController < ApplicationController
   end
 
   def destroy
-    @article = Article.find(params[:id])
     @article.destroy
     redirect_to root_path
   end
 
   def upvote
-    @article = Article.find(params[:id])
     @upvote = Upvote.new(article_id: @article.id, user_id: current_user.id)
       if @upvote.save
         @article.likes += 1
         @article.save
       end
-          
+
     redirect_to article_path(@article)
   end
 
   private
+
+  def select_article
+    @article = Article.find(params[:id])
+  end
 
   def article_params
     params.require(:article).permit(:title, :content)

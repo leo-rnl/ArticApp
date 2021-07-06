@@ -10,10 +10,6 @@
 // images in galleries will be squished by the max-width: 33%; rule.
 @import "trix/dist/trix";
 
-.rich_text_area {
-  height: auto;
-}
-
 .trix-content {
   .attachment-gallery {
     > action-text-attachment,
